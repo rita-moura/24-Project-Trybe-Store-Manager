@@ -19,10 +19,9 @@ const verifyIdInvalid = async (req, res, next) => {
 
 const verifyInputValue = async (req, res, next) => {
   const { name } = req.body;
-  const { type, message } = await productsService.createProduct(name);
+  const { message } = await productsService.createProduct();
 
   if (!name) return res.status(400).json({ message: `${message}` });
-  if (type) return res.status(422).json({ message: `${message}` });
 
   next();
 };
