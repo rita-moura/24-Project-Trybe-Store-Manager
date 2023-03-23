@@ -22,7 +22,9 @@ const createNewProduct = async (req, res) => {
 
   const { type, message } = await productsService.createProduct(name);
 
-  if (type) return res.status(404).json(message);
+  if (!name) return res.status(400).json({ message: `${message}` });
+
+  if (type) return res.status(422).json({ message: `${message}` });
 
   return res.status(201).json(message);
 };
