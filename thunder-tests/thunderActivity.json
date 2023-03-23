@@ -5,12 +5,17 @@
     "containerId": "",
     "name": "localhost:3001/products",
     "url": "localhost:3001/products",
-    "method": "GET",
+    "method": "POST",
     "sortNum": 0,
     "created": "2023-03-21T22:18:24.145Z",
-    "modified": "2023-03-21T22:18:24.145Z",
+    "modified": "2023-03-23T15:18:06.010Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"ProdutoX\"\n}",
+      "form": []
+    },
     "tests": []
   }
 ]

@@ -13,9 +13,21 @@ const products = [
   }
 ]
 
+const productFindById = {
+  "id": 1,
+  "name": "Martelo de Thor"
+}
+
 const resultFindAllService = { type: null, message: products }
+
+const resultFindByIdService = { type: null, message: productFindById }
+
+const resultInvalidId = { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' }
 
 module.exports = {
   products, 
   resultFindAllService,
+  productFindById,
+  resultFindByIdService,
+  resultInvalidId
 }
