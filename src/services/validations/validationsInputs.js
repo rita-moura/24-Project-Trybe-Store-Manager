@@ -11,7 +11,7 @@ const isValidId = (productId) => {
 const isValidNewProduct = (name) => {
   const { error } = nameSchema.validate({ name });
 
-  if (error) return { type: 'INVALID_VALUE', message: error.message };
+  if (error) return { type: 'BAD_REQUEST', message: error.message };
 
   return { tyep: null, message: '' };
 };

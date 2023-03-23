@@ -1,12 +1,13 @@
 const express = require('express');
 const { productsController } = require('../controllers');
+const { verifyErrorListProduct, verifyIdInvalid, verifyInputValue } = require('../middlewares');
 
 const router = express.Router();
 
-router.get('/', productsController.listProducts);
+router.get('/', verifyErrorListProduct, productsController.listProducts);
 
-router.get('/:id', productsController.getProductById);
+router.get('/:id', verifyIdInvalid, productsController.getProductById);
 
-router.post('/', productsController.createNewProduct);
+router.post('/', verifyInputValue, productsController.createNewProduct);
 
 module.exports = router;

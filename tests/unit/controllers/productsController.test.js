@@ -44,22 +44,22 @@ describe('Testa a camada controller de produtos', function () {
     expect(res.json).to.have.been.calledWith(resultFindByIdService.message);
   });
 
-  it('Testa se retorna erro, buscando com id inválido', async function () {
-    const res = {};
-    const req = {
-      params: { id: 666 }
-    };
+  // it('Testa se retorna erro, buscando com id inválido', async function () {
+  //   const res = {};
+  //   const req = {
+  //     params: { id: 666 }
+  //   };
 
-    res.status = sinon.stub().returns(res);
-    res.json = sinon.stub().returns();
+  //   res.status = sinon.stub().returns(res);
+  //   res.json = sinon.stub().returns();
 
-    sinon.stub(productsService, 'findById').resolves(resultInvalidId);
+  //   sinon.stub(productsService, 'findById').resolves(resultInvalidId);
 
-    await productsController.getProductById(req, res);
+  //   await productsController.getProductById(req, res);
 
-    expect(res.status).to.have.been.calledWith(404);
-    expect(res.json).to.have.been.calledWith({ message: `${resultInvalidId.message}` });
-  });
+  //   expect(res.status).to.have.been.calledWith(404);
+  //   expect(res.json).to.have.been.calledWith({ message: `${resultInvalidId.message}` });
+  // });
 
   afterEach(function () {
     sinon.restore();

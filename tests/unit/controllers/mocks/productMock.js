@@ -29,5 +29,5 @@ module.exports = {
   resultFindAllService,
   productFindById,
   resultFindByIdService,
-  resultInvalidId
+  resultInvalidId,
 }
