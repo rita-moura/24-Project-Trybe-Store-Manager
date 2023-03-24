@@ -1,8 +1,8 @@
 const { productsService } = require('../services');
 
-const listProducts = async (_req, res, next) => {
+const findAllProduct = async (_req, res, next) => {
   try {
-    const { message } = await productsService.findAll();
+    const { message } = await productsService.findAllProduct();
 
     return res.status(200).json(message);
   } catch (error) {
@@ -10,10 +10,10 @@ const listProducts = async (_req, res, next) => {
   }
 };
 
-const getProductById = async (req, res, next) => {
+const findProductById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { message } = await productsService.findById(id);
+    const { message } = await productsService.findProductById(id);
 
     return res.status(200).json(message);
   } catch (error) {
@@ -21,12 +21,13 @@ const getProductById = async (req, res, next) => {
   }
 };
 
-const createNewProduct = async (req, res, next) => {
+const insertProduct = async (req, res, next) => {
   try {
     const { name } = req.body;
-    const { type, message } = await productsService.createProduct(name);
+    const { type, message } = await productsService.insertProduct(name);
 
     if (type) return res.status(422).json({ message: `${message}` });
+    
     return res.status(201).json(message);
   } catch (error) {
     next(error);
@@ -34,7 +35,7 @@ const createNewProduct = async (req, res, next) => {
 };
 
 module.exports = {
-  listProducts,
-  getProductById,
-  createNewProduct,
+  findAllProduct,
+  findProductById,
+  insertProduct,
 };

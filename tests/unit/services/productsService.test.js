@@ -9,9 +9,9 @@ const { messageErro, resultFindAllModel, products, product, resultFindByIdModel 
 describe('Testa a camada service de produtos', function () {
 
   it('Testa se recupera a lista de produtos', async function () {
-    sinon.stub(productsModel, 'findAll').resolves(products);
+    sinon.stub(productsModel, 'findAllProduct').resolves(products);
 
-    const result = await productsService.findAll()
+    const result = await productsService.findAllProduct()
 
     expect(result).to.be.deep.equal(resultFindAllModel);
   })
@@ -19,9 +19,9 @@ describe('Testa a camada service de produtos', function () {
   it('Testa se recupera o produto por id', async function () {
   const VALID_ID = 1;
 
-  sinon.stub(productsModel, 'findById').resolves(product)
+    sinon.stub(productsModel, 'findProductById').resolves(product)
 
-  const result = await productsService.findById(VALID_ID)
+  const result = await productsService.findProductById(VALID_ID)
 
     expect(result).to.be.deep.equal(resultFindByIdModel);
   })
@@ -29,9 +29,9 @@ describe('Testa a camada service de produtos', function () {
   it('Testa se retorna um erro quando busca um id inválido', async function () {
     const INVALID_ID = 99;
     
-    sinon.stub(productsModel, 'findById').resolves(undefined);
+    sinon.stub(productsModel, 'findProductById').resolves(undefined);
 
-    const result = await productsService.findById(INVALID_ID);
+    const result = await productsService.findProductById(INVALID_ID);
 
     expect(result).to.be.deep.equal(messageErro);
   })

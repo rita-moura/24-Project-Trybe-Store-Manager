@@ -12,7 +12,7 @@ describe('Testa a camada model de produtos', function () {
   it('Testa se recupera a lista de produtos', async function () {
     sinon.stub(connection, 'execute').resolves([products]);
 
-    const result = await productsModel.findAll()
+    const result = await productsModel.findAllProduct()
 
     expect(result).to.be.deep.equal(products);
   })
@@ -22,7 +22,7 @@ describe('Testa a camada model de produtos', function () {
 
     sinon.stub(connection, 'execute').resolves([[products[0]]])
 
-    const result = await productsModel.findById(id)
+    const result = await productsModel.findProductById(id)
 
     expect(result).to.be.deep.equal(products[0]);
   })

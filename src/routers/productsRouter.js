@@ -4,10 +4,10 @@ const { verifyErrorListProduct, verifyIdInvalid, verifyInputValue } = require('.
 
 const router = express.Router();
 
-router.get('/', verifyErrorListProduct, productsController.listProducts);
+router.get('/', verifyErrorListProduct, productsController.findAllProduct);
 
-router.get('/:id', verifyIdInvalid, productsController.getProductById);
+router.get('/:id', verifyIdInvalid, productsController.findProductById);
 
-router.post('/', verifyInputValue, productsController.createNewProduct);
+router.post('/', verifyInputValue, productsController.insertProduct);
 
 module.exports = router;

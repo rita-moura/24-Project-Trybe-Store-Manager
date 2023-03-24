@@ -1,11 +1,18 @@
-const newSale = async (_req, res, next) => {
+const { salesService } = require('../services');
+
+const insertSales = async (req, res, next) => {
   try {
-    return res.status(201).json({ message: '' });
+    const sales = req.body;
+    const newSales = await salesService.insertSales(sales);
+
+    // if (type) return res.status(400).json({ message: `${message}` });
+
+    return res.status(201).json(newSales);
   } catch (error) {
     next(error);
   }
 };
 
 module.exports = {
-  newSale,
+  insertSales,
 };

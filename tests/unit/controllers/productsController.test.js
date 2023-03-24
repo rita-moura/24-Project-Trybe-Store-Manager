@@ -19,9 +19,9 @@ describe('Testa a camada controller de produtos', function () {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
 
-    sinon.stub(productsService, 'findAll').resolves(resultFindAllService);
+    sinon.stub(productsService, 'findAllProduct').resolves(resultFindAllService);
 
-    await productsController.listProducts(req, res);
+    await productsController.findAllProduct(req, res);
 
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(resultFindAllService.message);
@@ -36,9 +36,9 @@ describe('Testa a camada controller de produtos', function () {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
 
-    sinon.stub(productsService, 'findById').resolves(resultFindByIdService);
+    sinon.stub(productsService, 'findProductById').resolves(resultFindByIdService);
 
-    await productsController.getProductById(req, res);
+    await productsController.findProductById(req, res);
 
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(resultFindByIdService.message);
