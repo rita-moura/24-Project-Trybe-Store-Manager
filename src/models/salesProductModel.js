@@ -9,16 +9,6 @@ const insertSales = async (saleId, { productId, quantity }) => {
   return newSales;
 };
 
-const findSalesById = async (productId) => {
-  const [[products]] = await connection.execute(
-    'SELECT * FROM StoreManager.sales WHERE id = ?',
-    [productId],
-  );
-
-  return products;
-};
-
 module.exports = {
   insertSales,
-  findSalesById,
 };

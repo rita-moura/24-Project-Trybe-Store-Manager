@@ -4,10 +4,26 @@ const insertSales = async (req, res, next) => {
   try {
     const sales = req.body;
     const newSales = await salesService.insertSales(sales);
-
-    // if (type) return res.status(400).json({ message: `${message}` });
-
     return res.status(201).json(newSales);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const findAllSales = async (_req, res, next) => {
+  try {
+    const sales = await salesService.findAllSales();
+    return res.status(200).json(sales);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const findSalesById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const sale = await salesService.findSalesById(id);
+    return res.status(200).json(sale);
   } catch (error) {
     next(error);
   }
@@ -15,4 +31,6 @@ const insertSales = async (req, res, next) => {
 
 module.exports = {
   insertSales,
+  findAllSales,
+  findSalesById,
 };

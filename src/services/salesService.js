@@ -9,7 +9,7 @@ const insertSales = async (salesArray) => {
 
   const productIds = await Promise.all(salesArray.map((sale) => productsModel
     .findProductById(sale.productId)));
-
+  
   const verifyProductId = productIds.some((product) => !product);
 
   if (verifyProductId) { throw statusError(404, 'Product not found'); }
@@ -22,20 +22,22 @@ const insertSales = async (salesArray) => {
   return { id: saleId, itemsSold: salesArray };
 };
 
-module.exports = {
-  insertSales,
+const findAllSales = async () => {
+  const sales = await salesModel.findAllSales();
+
+  return sales;
 };
 
-// {
-//   "id": 3,
-//     "itemsSold": [
-//       {
-//         "productId": 1,
-//         "quantity": 1
-//       },
-//       {
-//         "productId": 2,
-//         "quantity": 5
-//       }
-//     ]
-// }
+const findSalesById = async (id) => {
+  const sale = await salesModel.findSalesById(id);
+
+  if (sale.length === 0) { throw statusError(404, 'Sale not found'); }
+
+  return sale;
+};
+
+module.exports = {
+  insertSales,
+  findAllSales,
+  findSalesById,
+};
