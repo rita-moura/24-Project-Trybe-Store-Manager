@@ -1,6 +1,6 @@
 const connection = require('./connection');
 
-const salesId = async () => {
+const insertSales = async () => {
   const query = 'INSERT INTO StoreManager.sales (date) VALUES(now())';
 
   const [{ insertId }] = await connection.execute(query);
@@ -9,5 +9,5 @@ const salesId = async () => {
 };
 
 module.exports = {
-  salesId,
+  insertSales,
 };

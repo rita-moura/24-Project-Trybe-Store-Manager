@@ -2,9 +2,9 @@ const { productsService } = require('../services');
 
 const findAllProduct = async (_req, res, next) => {
   try {
-    const { message } = await productsService.findAllProduct();
+    const products = await productsService.findAllProduct();
 
-    return res.status(200).json(message);
+    return res.status(200).json(products);
   } catch (error) {
     next(error);
   }
@@ -13,9 +13,10 @@ const findAllProduct = async (_req, res, next) => {
 const findProductById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { message } = await productsService.findProductById(id);
 
-    return res.status(200).json(message);
+    const product = await productsService.findProductById(id);
+
+    return res.status(200).json(product);
   } catch (error) {
     next(error);
   }
@@ -24,11 +25,9 @@ const findProductById = async (req, res, next) => {
 const insertProduct = async (req, res, next) => {
   try {
     const { name } = req.body;
-    const { type, message } = await productsService.insertProduct(name);
+    const newProduct = await productsService.insertProduct(name);
 
-    if (type) return res.status(422).json({ message: `${message}` });
-    
-    return res.status(201).json(message);
+    return res.status(201).json(newProduct);
   } catch (error) {
     next(error);
   }

@@ -1,34 +1,29 @@
 const { productsModel } = require('../models');
-const schema = require('./validations/validationsInputs');
+const statusError = require('../utils/httpStatusErro');
+const { dictionary, validationProduct } = require('./schemas/productsSchemas');
 
 const findAllProduct = async () => {
   const products = await productsModel.findAllProduct();
 
-  return { type: null, message: products };
+  return products;
 };
 
-const findProductById = async (productId) => {
-  const error = schema.isValidId(productId);
+const findProductById = async (id) => {
+  const product = await productsModel.findProductById(id);
 
-  if (error.type) return error;
+  if (!product) { throw statusError(404, 'Product not found'); }
 
-  const product = await productsModel.findProductById(productId);
-
-  if (!product) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
-
-  return { type: null, message: product };
+  return product;
 };
 
 const insertProduct = async (product) => {
-  const error = schema.isValidNewProduct(product);
+  const { error } = validationProduct({ name: product });
 
-  if (error.type) return error;
+  if (error) { throw statusError(dictionary[error.details[0].type], error.message); }
 
-  const newProductId = await productsModel.insertProduct(product);
+  const newProduct = await productsModel.insertProduct(product);
 
-  const newProduct = await productsModel.findProductById(newProductId.id);
-
-  return { type: null, message: newProduct };
+  return newProduct;
 };
 
 module.exports = {

@@ -18,16 +18,13 @@ const productFindById = {
   "name": "Martelo de Thor"
 }
 
-const resultFindAllService = { type: null, message: products }
+const resultInvalidIdService = { status: 404, message: 'Product not found' }
 
-const resultFindByIdService = { type: null, message: productFindById }
-
-const resultInvalidId = { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' }
+const resultInvalidId = { message: 'Product not found' }
 
 module.exports = {
   products, 
-  resultFindAllService,
   productFindById,
-  resultFindByIdService,
   resultInvalidId,
+  resultInvalidIdService,
 }

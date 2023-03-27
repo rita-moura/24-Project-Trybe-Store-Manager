@@ -20,14 +20,10 @@ const products = [
     }
   ]
 
-const resultFindByIdModel = { type: null, message: product }
-const resultFindAllModel = { type: null, message: products }
-const messageErro = { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' }
+const messageErro = { message: 'Product not found' }
 
 module.exports = {
   product,
   products,
   messageErro,
-  resultFindAllModel,
-  resultFindByIdModel
 }

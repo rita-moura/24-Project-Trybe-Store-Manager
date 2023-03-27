@@ -8,7 +8,7 @@ chai.use(sinonChai);
 const { productsController } = require('../../../src/controllers');
 const { productsService } = require('../../../src/services');
 
-const { resultFindAllService, resultFindByIdService, resultInvalidId } = require('./mocks/productMock');
+const { resultInvalidId, products, productFindById, resultInvalidIdService } = require('./mocks/productMock');
 
 describe('Testa a camada controller de produtos', function () {
 
@@ -19,12 +19,12 @@ describe('Testa a camada controller de produtos', function () {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
 
-    sinon.stub(productsService, 'findAllProduct').resolves(resultFindAllService);
+    sinon.stub(productsService, 'findAllProduct').resolves(products);
 
     await productsController.findAllProduct(req, res);
 
     expect(res.status).to.have.been.calledWith(200);
-    expect(res.json).to.have.been.calledWith(resultFindAllService.message);
+    expect(res.json).to.have.been.calledWith(products);
   });
 
   it('Testa se retorna produto correto na busca por id', async function () {
@@ -36,29 +36,30 @@ describe('Testa a camada controller de produtos', function () {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
 
-    sinon.stub(productsService, 'findProductById').resolves(resultFindByIdService);
+    sinon.stub(productsService, 'findProductById').resolves(productFindById);
 
     await productsController.findProductById(req, res);
 
     expect(res.status).to.have.been.calledWith(200);
-    expect(res.json).to.have.been.calledWith(resultFindByIdService.message);
+    expect(res.json).to.have.been.calledWith(productFindById);
   });
 
   // it('Testa se retorna erro, buscando com id inválido', async function () {
   //   const res = {};
   //   const req = {
-  //     params: { id: 666 }
+  //     body: {},
+  //     params: { id: 33 }
   //   };
 
   //   res.status = sinon.stub().returns(res);
   //   res.json = sinon.stub().returns();
 
-  //   sinon.stub(productsService, 'findById').resolves(resultInvalidId);
+  //   sinon.stub(productsService, 'findProductById').resolves(resultInvalidIdService);
 
-  //   await productsController.getProductById(req, res);
+  //   await productsController.findProductById(req, res);
 
   //   expect(res.status).to.have.been.calledWith(404);
-  //   expect(res.json).to.have.been.calledWith({ message: `${resultInvalidId.message}` });
+  //   expect(res.json).to.have.been.calledWith(resultInvalidId);
   // });
 
   afterEach(function () {
