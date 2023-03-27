@@ -33,8 +33,21 @@ const insertProduct = async (req, res, next) => {
   }
 };
 
+const updatedProduct = async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    const { id } = req.params;
+    const newProduct = await productsService.updatedProduct(id, name);
+
+    return res.status(200).json(newProduct);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   findAllProduct,
   findProductById,
   insertProduct,
+  updatedProduct,
 };

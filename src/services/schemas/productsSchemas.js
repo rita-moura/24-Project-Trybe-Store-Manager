@@ -12,7 +12,9 @@ const dictionary = {
   'any.required': 400,
 };
 
-const validationProduct = (product) => productsSchema.validate(product);
+const productsArraySchema = Joi.array().items(productsSchema);
+
+const validationProduct = (product) => productsArraySchema.validate(product);
 
 module.exports = {
   dictionary,
