@@ -29,8 +29,21 @@ const findSalesById = async (req, res, next) => {
   }
 };
 
+const deletedSale = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    await salesService.deletedSale(id);
+
+    return res.status(204).json();
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   insertSales,
   findAllSales,
   findSalesById,
+  deletedSale,
 };
