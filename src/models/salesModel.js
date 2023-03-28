@@ -28,6 +28,14 @@ const findSalesById = async (id) => {
   return sales;
 };
 
+const updatedSale = async ({ productId, quantity }, id) => {
+  const query = `UPDATE StoreManager.sales_products SET quantity = ?
+  WHERE sale_id = ? and product_id = ?`;
+  const [sale] = await connection.execute(query, [quantity, id, productId]);
+
+  return sale;
+};
+
 const deletedSale = async (id) => {
   const query = 'DELETE FROM StoreManager.sales WHERE id = ?';
 
@@ -41,4 +49,5 @@ module.exports = {
   findAllSales,
   findSalesById,
   deletedSale,
+  updatedSale,
 };
