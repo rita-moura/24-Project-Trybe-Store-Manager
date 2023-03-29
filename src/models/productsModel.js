@@ -41,10 +41,20 @@ const deletedProduct = async (id) => {
   return deleted.affectedRows;
 };
 
+const searchProduct = async (term) => {
+  const param = `%${term}%`;
+  const query = 'SELECT * FROM products WHERE name LIKE ? ORDER BY id';
+
+  const [search] = await connection.execute(query, [param]);
+
+  return search;
+};
+
 module.exports = {
   findAllProduct,
   findProductById,
   insertProduct,
   updatedProduct,
   deletedProduct,
+  searchProduct,
 };

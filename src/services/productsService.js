@@ -50,10 +50,17 @@ const deletedProduct = async (id) => {
   return deleted;
 };
 
+const searchProduct = async (term) => {
+  const search = await productsModel.searchProduct(term);
+
+  return search;
+};
+
 module.exports = {
   findAllProduct,
   findProductById,
   insertProduct,
   updatedProduct,
   deletedProduct,
+  searchProduct,
 };
