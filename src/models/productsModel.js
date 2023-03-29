@@ -42,10 +42,9 @@ const deletedProduct = async (id) => {
 };
 
 const searchProduct = async (term) => {
-  const param = `%${term}%`;
   const query = 'SELECT * FROM products WHERE name LIKE ? ORDER BY id';
 
-  const [search] = await connection.execute(query, [param]);
+  const [search] = await connection.execute(query, [`%${term}%`]);
 
   return search;
 };
