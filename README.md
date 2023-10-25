@@ -44,13 +44,3 @@ npm start || npm run dev
 - PUT /vendas/:id - Atualiza uma venda existente
 - DELETE /vendas/:id - Deleta uma venda existente
 
-## Contribuindo
-1 - Faça um fork deste repositório.
-
-2 - Crie uma branch com sua nova feature (git checkout -b minha-feature).
-
-3 - Faça commit de suas alterações (git commit -m 'Adicionando nova feature').
-
-4 - Faça push para a branch (git push origin minha-feature).
-
-5 - Crie um novo Pull Request e aguarde sua análise e aprovação.
