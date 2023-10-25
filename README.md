@@ -1,22 +1,27 @@
 # API de Gerenciamento de Vendas Dropshipping
+
 Esta é uma API desenvolvida com a arquitetura MSC (model-service-controller) que permite gerenciar produtos e vendas em um sistema de dropshipping. A API é RESTful e utiliza o banco de dados MySQL para a gestão de dados.
 
 ## Funcionalidades
+
 - Criar, visualizar, deletar e atualizar produtos
 - Criar, visualizar, deletar e atualizar vendas
 
 ## Tecnologias utilizadas
+
 - Node.js
 - Express.js
 - MySQL
 - Docker
 
 ## Como utilizar
+
 1 - Clone o repositório para sua máquina local:
 
 ```bash
 git clone https://github.com/seu-usuario/nome-do-repositorio.git
 ```
+
 2 - Instale as dependências:
 
 ```bash
@@ -43,4 +48,3 @@ npm start || npm run dev
 - POST /vendas - Cria uma nova venda
 - PUT /vendas/:id - Atualiza uma venda existente
 - DELETE /vendas/:id - Deleta uma venda existente
-
