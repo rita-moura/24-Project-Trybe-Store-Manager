@@ -49,7 +49,7 @@ npm start || npm run dev
 
 2 - Crie uma branch com sua nova feature (git checkout -b minha-feature).
 
-3 - Faça commit de suas alterações (git commit -am 'Adicionando nova feature').
+3 - Faça commit de suas alterações (git commit -m 'Adicionando nova feature').
 
 4 - Faça push para a branch (git push origin minha-feature).
 
